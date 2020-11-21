@@ -18,14 +18,19 @@ function getPassword () {
 
 	input.value = password
 	
-	alertBox.innerHTML = `New Password Copied:<br>${password}`
+	alertBox.innerHTML = `Password copied to the clipboard:<br><span class="password">${password}</span>`
 }
 
 function copyPassword () {
 	const copyPassText = document.getElementById('password')
+
 	copyPassText.select()
-	copyPassText.setSelectionRange(0, 9999)
+
 	document.execCommand('copy')
+	
+	copyPassText.setSelectionRange(0, 0)
+	// document.getSelection().removeAllRanges()
+
 	alertBox.classList.toggle('active')
 	setTimeout(() => {
 		alertBox.classList.toggle('active')
